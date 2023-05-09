@@ -14,7 +14,7 @@ public class MyController {
     @GetMapping("/consume-cpu")
     public String consumeCpu() {
         for(int i = 0; i < 1000000000; i++) {
-            double j = Math.pow(i, 2);
+            double j = Math.pow(i, 3);
         }
         return "CPU process completed";
     }
