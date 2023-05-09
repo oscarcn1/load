@@ -21,11 +21,11 @@ public class MyController {
 
     @GetMapping("/consume-memory")
     public String consumeMemory() {
-        byte[] bigObject = new byte[1024 * 1024 * 100]; // Crea un objeto grande de 100 MB
+        byte[] bigObject = new byte[1024 * 1024 * 10]; // Crea un objeto grande de 10 MB
         bigList.add(bigObject); // Agrega el objeto a la lista
         long memoryUsed = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
         double totalMemoryInMB = (double) memoryUsed / (1024 * 1024);
-        return "100 MB object added to the list. Memory used: " + new DecimalFormat("#.##").format(totalMemoryInMB) + " Mb";
+        return "10 MB object added to the list. Memory used: " + new DecimalFormat("#.##").format(totalMemoryInMB) + " Mb";
     }
 
     @GetMapping("/sleep-miliseconds")
