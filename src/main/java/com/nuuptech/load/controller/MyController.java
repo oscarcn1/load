@@ -21,7 +21,7 @@ public class MyController {
     }
 
     private void hugeCpuOperation(Integer number) {
-        for(int i = 10000; i > 1; i--) {
+        for(int i = 1000000; i > 1; i--) {
             try {
                 double j = Math.pow(i, number);
             } catch (Exception e) {
