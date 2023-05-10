@@ -4,6 +4,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.ArrayList;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -11,12 +12,22 @@ public class MyController {
 
     private List<byte[]> bigList = new ArrayList<>();
 
-    @GetMapping("/consume-cpu")
-    public String consumeCpu() {
-        for(int i = 0; i < 1000000000; i++) {
-            double j = Math.pow(i, 3);
+    @GetMapping("/consume-cpu/{number}")
+    public String consumeCpu(@PathVariable Integer number) {
+        for(int i = 0; i < number; i++) {
+            hugeCpuOperation(i);
         }
         return "CPU process completed";
+    }
+
+    private void hugeCpuOperation(Integer number) {
+        for(int i = 1000000000; i > 1; i--) {
+            try {
+                double j = Math.pow(i, number);
+            } catch (Exception e) {
+                System.out.println("Too much");
+            }
+        }
     }
 
     @GetMapping("/consume-memory")
